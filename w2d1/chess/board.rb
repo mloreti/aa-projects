@@ -24,5 +24,5 @@ class Board
 end
 
 board = Board.new
-b = Queen.new([4,4],:w,board)
+b = Pawn.new([4,6],:w,board)
 p b.moves

@@ -21,21 +21,21 @@ class Board
   end
 
   def move(start_pos, end_pos)
-    if has_piece?(start_pos) || valid_move?(start_pos, end_pos)
+    unless has_piece?(start_pos) && valid_move?(start_pos, end_pos)
       raise ArgumentError.new "Invalid move"
     end
-
-    one_piece = @grid[start_pos]
+    # debugger
+    one_piece = @grid[start_pos[0]][start_pos[1]]
     if one_piece.is_a?(Pawn)
       one_piece.starting_pos = false
     end
-    @grid[start_pos] = NullPiece.instance
-    @grid[end_pos] = one_piece
+    @grid[start_pos[0]][start_pos[1]] = NullPiece.instance
+    @grid[end_pos[0]][end_pos[1]] = one_piece
 
   rescue ArgumentError => e
     puts "Please try again"
     puts "Error message: #{e.message}"
-    retry
+    # retry
   end
 
   def in_bounds?(x,y)
@@ -43,20 +43,20 @@ class Board
   end
 
   def has_piece?(start_pos)
-    !@grid[start_pos].is_a?(NullPiece)
+    !@grid[start_pos[0]][start_pos[1]].is_a?(NullPiece)
   end
 
   def valid_move?(start_pos, end_pos)
-    @grid[start_pos].valid_moves.include?(end_pos)
+    @grid[start_pos[0]][start_pos[1]].valid_moves.include?(end_pos)
   end
 
   def place_pieces
     rows = [[Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook], Array.new(8) { Pawn }]
     rows.each_with_index do |row, i|
       row.each_with_index do |piece, j|
-        @grid[i][j] =  piece.new([i,j], :b, self)
+        @grid[i][j] =  piece.new([i,j], :black, self)
         @piece_on_board << @grid[i][j]
-        @grid[7 - i][j] =  piece.new([i,j], :w, self)
+        @grid[7 - i][j] =  piece.new([7-i,j], :white, self)
         @piece_on_board << @grid[7 - i][j]
       end
     end
@@ -93,6 +93,12 @@ class Board
 end
 
 
-b = Board.new
-b.place_pieces
-b.check_mate?(:w)
+# b = Board.new
+# b.place_pieces
+# d = Display.new(b)
+# b.move([3,0],[3,0])
+# p b.grid[3][0].class
+#
+# # loop do
+# #   d.render
+# # end

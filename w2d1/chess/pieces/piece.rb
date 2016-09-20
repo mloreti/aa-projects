@@ -17,4 +17,7 @@ end
 class NullPiece
   include Singleton
   attr_reader :color
+  def to_s
+    " "
+  end
 end

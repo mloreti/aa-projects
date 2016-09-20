@@ -59,10 +59,10 @@ module SteppingPiece
       else
         # debugger
         if square.color == self.color
-          break
+          next
         else
           result << pos
-          break
+          next
         end
       end
     end

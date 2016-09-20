@@ -82,16 +82,16 @@ class Cursor
     when :space
       @cursor_pos
     when :left
-      update_pos([-1, 0])
+      update_pos([0, -1])
       nil
     when :right
-      update_pos([1, 0])
-      nil
-    when :up
       update_pos([0, 1])
       nil
+    when :up
+      update_pos([-1, 0])
+      nil
     when :down
-      update_pos([0, -1])
+      update_pos([1, 0])
       nil
     when :ctrl_c
       Process.exit(0)
@@ -102,7 +102,7 @@ class Cursor
   def update_pos(diff)
     x = @cursor_pos.first + diff.first
     y = @cursor_pos.last + diff.last
-    @curosr_pos = [x,y] if @board.in_bounds?(x,y)
+    @cursor_pos = [x,y] if @board.in_bounds?(x,y)
   end
 
 end

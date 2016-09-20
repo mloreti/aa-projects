@@ -1,4 +1,8 @@
+
+require "singleton"
 class Piece
+  attr_reader :color, :pos
+
   def initialize(pos,color,board)
     @pos = pos
     @color = color
@@ -11,6 +15,6 @@ class Piece
 end
 
 class NullPiece
-  # include Singleton
-
+  include Singleton
+  attr_reader :color
 end

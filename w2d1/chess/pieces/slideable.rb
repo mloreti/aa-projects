@@ -44,11 +44,12 @@ module SlidingPiece
     possible_moves
   end
 
-  def valid_moves(array)
+  def valid_moves
+    array = self.moves
     result = []
     array.each do |dir|
       dir.each do |pos|
-        square = @board[pos[0], pos[1]]
+        square = @board[pos]
         if square.nil?
           result << pos
         else

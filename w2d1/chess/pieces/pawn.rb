@@ -3,6 +3,7 @@ require_relative 'slideable'
 
 class Pawn < Piece
   include SlidingPiece
+  attr_accessor :starting_pos
 
   def initialize(pos,color,board)
     @starting_pos = true

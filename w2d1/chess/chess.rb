@@ -17,9 +17,11 @@ class Chess
     loop do
       @display.render
       result = @current_player.play_turn(@display)
-      # debugger
       @board.move(result[0], result[1])
-      break if @board.check_mate?(@current_player.color)
+      if @board.check_mate?(@current_player.color)
+        puts "Game over. #{current_player} loses"
+        break
+      end
       switch_player
     end
   end

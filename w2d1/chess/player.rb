@@ -8,18 +8,25 @@ class Player
   end
 
   def play_turn(display)
-    puts "#{@name} turn"
-    puts "start position"
+    # debugger
     start_pos = nil
-    end_pos = nil
     while start_pos.nil?
+      display.render
+      puts "#{@name} turn"
+      print "Start position: "
+      print display.cursor.cursor_pos
       start_pos = display.cursor.get_input
     end
-    puts "end position"
+    end_pos = nil
     while end_pos.nil?
+      display.render
+      puts "#{@name} turn"
+      puts "Start Position: #{start_pos}"
+      print "End position: "
+      print display.cursor.cursor_pos
       end_pos = display.cursor.get_input
     end
-
+    [start_pos, end_pos]
   end
 
 end

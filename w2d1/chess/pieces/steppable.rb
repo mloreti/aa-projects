@@ -53,6 +53,7 @@ module SteppingPiece
     array = self.moves
     result = []
     array.each do |pos|
+      next if pos.nil?
       square = @board[pos]
       if square.nil?
         result << pos

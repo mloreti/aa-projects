@@ -15,16 +15,17 @@ class Chess
 
   def play
     loop do
-      break if @board.check_mate?(@current_player.color)
-
       @display.render
-      @current_player.play_turn(@display)
+      result = @current_player.play_turn(@display)
+      # debugger
+      @board.move(result[0], result[1])
+      break if @board.check_mate?(@current_player.color)
       switch_player
     end
   end
 
   def switch_player
-    @current_player == @player1 ? @player2 : @player1
+    @current_player = @current_player == @player1 ? @player2 : @player1
   end
 
 end

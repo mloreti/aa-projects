@@ -49,6 +49,7 @@ module SlidingPiece
     result = []
     array.each do |dir|
       dir.each do |pos|
+        next if pos.nil?
         square = @board[pos]
         if square.nil?
           result << pos

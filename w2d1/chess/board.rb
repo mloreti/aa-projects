@@ -21,20 +21,22 @@ class Board
   end
 
   def move(start_pos, end_pos)
+    # debugger
     unless has_piece?(start_pos) && valid_move?(start_pos, end_pos)
       raise ArgumentError.new "Invalid move"
     end
     # debugger
-    one_piece = @grid[start_pos[0]][start_pos[1]]
+    one_piece = self[start_pos]
     if one_piece.is_a?(Pawn)
       one_piece.starting_pos = false
     end
-    @grid[start_pos[0]][start_pos[1]] = NullPiece.instance
-    @grid[end_pos[0]][end_pos[1]] = one_piece
+    self[start_pos] = NullPiece.instance
+    self[end_pos] = one_piece
 
   rescue ArgumentError => e
-    puts "Please try again"
-    puts "Error message: #{e.message}"
+    puts "\nPlease try again".red
+    puts "Error message: #{e.message}".red
+    sleep(2)
     # retry
   end
 
@@ -43,11 +45,11 @@ class Board
   end
 
   def has_piece?(start_pos)
-    !@grid[start_pos[0]][start_pos[1]].is_a?(NullPiece)
+    !self[start_pos].is_a?(NullPiece)
   end
 
   def valid_move?(start_pos, end_pos)
-    @grid[start_pos[0]][start_pos[1]].valid_moves.include?(end_pos)
+    self[start_pos].valid_moves.include?(end_pos)
   end
 
   def place_pieces
@@ -56,6 +58,11 @@ class Board
       row.each_with_index do |piece, j|
         @grid[i][j] =  piece.new([i,j], :black, self)
         @piece_on_board << @grid[i][j]
+      end
+    end
+    rows = [[Rook, Knight, Bishop, King, Queen, Bishop, Knight, Rook], Array.new(8) { Pawn }]
+    rows.each_with_index do |row, i|
+      row.each_with_index do |piece, j|
         @grid[7 - i][j] =  piece.new([7-i,j], :white, self)
         @piece_on_board << @grid[7 - i][j]
       end
@@ -77,17 +84,25 @@ class Board
     self_moves = []
     self_pieces.each do |piece|
       piece.valid_moves.each do |valid_move|
-        self_moves += [piece.pos, valid_move]
+        self_moves << [piece.pos, valid_move]
       end
     end
     self_moves.all? { |move| move_into_check?(move, color) }
   end
 
   def move_into_check?(piece_move, color)
-    move(piece_move.first, piece_move.last)
+    # debugger
+    fake_move(piece_move.first, piece_move.last)
     result = in_check?(color)
-    move(piece_move.last, piece_move.first)
+    fake_move(piece_move.last, piece_move.first)
     result
+  end
+
+  def fake_move(start_pos, end_pos)
+    piece = self[start_pos]
+    self[start_pos] = NullPiece.instance
+    self[end_pos] = piece
+
   end
 
 end

@@ -1,0 +1,79 @@
+<h1><%= link_to "kittybook", cats_url %></h1>
+<% @new = @cat.nil? %>
+<h3> <%= @new ? "new kitty" : "update #{@cat.name}" %></h3>
+
+<form action="<%= @new ? "/cats" : "/cats/#{@cat.id}"%>" method="post">
+
+  <% unless @new %>
+    <input type="hidden" name="_method" value="PATCH">
+  <% end %>
+
+  <label for="cat_name">kitty name: </label>
+  <input
+    name="cat[name]" id="cat_name"
+    type="text"
+    value = "<% unless @new %><%= @cat.name %><% end %>" >
+
+  <br>
+  <br>
+
+  <label for="cat_birth_date">kitty day: </label>
+  <input
+    name="cat[birth_date]" id="birth_date"
+    type="date"
+    value = "<% unless @new %><%= @cat.birth_date %><% end %>">
+  <br>
+  <br>
+
+  <div>
+    <label>gender: </label>
+    <input
+      name="cat[sex]" id="cat_sex_m"
+      type="radio"
+      value="M"
+      checked="<% unless @new %><%= @cat.sex == 'M' ? "checked" : "" %><% end %>">
+    <label for="cat_sex_m">boy</label>
+
+    <input
+      name="cat[sex]" id="cat_sex_f"
+      type="radio"
+      value="F"
+      checked="<% unless @new %><%= @cat.sex == 'F' ? "checked" : "" %><% end %>">
+    <label for="cat_sex_f">girl</label>
+  </div>
+  <br>
+
+
+  <label for="cat_color">furrr color</label>
+  <!-- dropdown -->
+  <select name="cat[color]">
+    <!-- `brown` is the value that will be submitted to the server; user is
+         displayed "Brown" as the choice -->
+
+    <option>select color</option>
+    <% ["black", "blue", "pink"].map do |color| %>
+      <option
+        value="<%=color%>"
+        <% unless @new %><%= "selected" if @cat.color.downcase == color  %><% end %>>
+        <%=color%>
+      </option>
+    <% end %>
+  </select>
+  <br>
+  <br>
+  <label for="cat_description">description</label>
+  <div class="">
+    <textarea name="cat[description]"><% unless @new %><%=@cat.description%><% end %></textarea>
+  </div>
+  <br>
+  <!-- <label for="cat_birth_date">Birth date</label>
+  click on the date will launch a date picker
+  <input name="cat[birth_date]" id="cat_birth_date" type="date"> -->
+  <% if @new %>
+    <input type="submit" value="create my kitty!">
+  <% else %>
+    <input type="submit" value="update my kitty!">
+  <% end %>
+
+
+</form>

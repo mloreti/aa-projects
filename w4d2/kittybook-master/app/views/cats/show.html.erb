@@ -1,0 +1,48 @@
+<h1><%= link_to "kittybook", cats_url %></h1>
+<h2>bio</h2>
+<table>
+  <tr>
+    <td><strong>name: </strong> </td>
+    <td> <%= @cat.name.downcase %> </td>
+  </tr>
+  <tr>
+    <td> <strong>meows:</strong> </td>
+    <td> <%= @cat.age %> </td>
+  </tr>
+  <tr>
+    <td> <strong>color:</strong> </td>
+    <td> <%= @cat.color %> </td>
+  </tr>
+  <tr>
+    <td> <strong>gender:</strong> </td>
+    <td> <%= @cat.sex == 'F' ? 'girl' : 'boy'%> </td>
+  </tr>
+  <tr>
+    <td> <strong>description:</strong> </td>
+    <td> <%= @cat.description.downcase %> </td>
+  </tr>
+</table>
+<h2>rentals</h2>
+<% unless @rentals.empty? %>
+  <table>
+    <tr>
+      <td><strong>name</strong></td>
+      <td><strong>start date</strong></td>
+      <td><strong>end date</strong></td>
+    </tr>
+    <% @rentals.each do |rental| %>
+      <tr>
+        <td><%= rental.cat.name %></td>
+        <td><%= rental.start_date %></td>
+        <td><%= rental.end_date %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <h3>no rentals...</h3>
+<% end %>
+<%= button_to "rent me", new_cat_rental_url, method: :get  %>
+
+<hr>
+<%= button_to "edit kitty", edit_cat_url, method: :get %>
+<%= button_to "remove kitty", { controller: :cats, action: :destroy, id: @cat.id }, method: :delete  %>

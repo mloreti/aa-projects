@@ -1,0 +1,10 @@
+<h1><%= link_to "kittybook", cats_url %></h1>
+<ul>
+  <% @cats.sort_by { |cat| cat.id }.each do |cat| %>
+  <li>
+    <%= link_to cat.name, cat_path(cat.id) %>
+  </li>
+  <% end %>
+</ul>
+
+<%= button_to "new kitty", new_cat_path, method: :get %>

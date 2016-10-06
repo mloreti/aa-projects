@@ -1,0 +1,21 @@
+
+<form action="<%= action %>" method="post">
+
+  <label>Email
+    <br>
+    <input type="text" name="user[email]" id="user_email">
+  </label>
+  <br>
+
+  <label>Password
+    <br>
+    <input type="password" name="user[password]" id="user_password">
+  </label>
+  <br>
+  <br>
+  <input
+    class="btn btn-primary"
+    type="submit"
+    value="<%= action == users_url ? "Sign up" : "Sign in" %>">
+
+</form>

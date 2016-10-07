@@ -1,2 +1,30 @@
-<h1>Albums#new</h1>
-<p>Find me in app/views/albums/new.html.erb</p>
+<h1>Add album for <%= @band.name %></h1>
+<form action="/albums" method="post">
+
+<input type="hidden" name="album[band_id]" value="<%= @band.id %>">
+<label>Title:
+  <br>
+  <input type="text" name="album[title]">
+</label>
+<br>
+<br>
+
+<input
+  type="radio"
+  name="album[studio]"
+  value="true"
+  id="album_studio_true">
+<label for="album_studio_true">Studio</label>
+<br>
+<input
+  type="radio"
+  name="album[studio]"
+  value="false"
+  id="album_studio_false">
+<label for="album_studio_false">Live</label>
+<br>
+<br>
+
+<input type="submit" value="Add album">
+
+</form>

@@ -1,9 +1,13 @@
 <h1><%= @band.name %></h1>
-
 <h3>Albums</h3>
+<hr>
+<% @band.albums.each do |album| %>
+  <h3><%= link_to album.title, album_url(album) %></h3>
+<% end %>
+<br>
+<br>
 
-<ul>
-  <% @band.albums.each do |album| %>
-    <li><%= link_to album.title, album_url(album) %></li>
-  <% end %>
-</ul>
+<%= button_to "Add an album",
+  new_band_album_url(@band),
+  method: :get,
+  class: "btn btn-default" %>

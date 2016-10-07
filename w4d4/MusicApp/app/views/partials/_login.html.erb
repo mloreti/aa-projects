@@ -1,5 +1,9 @@
 <% if current_user %>
-  <%= button_to "Log Out", session_url, class: "btn btn-danger", method: :delete %>
+  <p>Logged in as:
+    <strong><%= name(current_user) %></strong>
+  </p>
+  <%= button_to "Log Out", session_url, class: "btn-xs btn-danger", method: :delete %>
 <% else %>
-  <%= button_to "Log In", new_session_url, class: "btn btn-default", method: :get %>
+  <%= button_to "Sign up", new_user_url, class: "btn btn-default", method: :get %>
+  <%= button_to "Sign In", new_session_url, class: "btn btn-default", method: :get %>
 <% end %>

@@ -17,6 +17,9 @@
   <body>
     <%= render 'partials/errors' %>
     <%= render 'partials/login' %>
+
+    <h2><%= link_to "All bands", bands_url, method: :get if logged_in? %></h2>
+
     <%= yield %>
   </body>
 </html>

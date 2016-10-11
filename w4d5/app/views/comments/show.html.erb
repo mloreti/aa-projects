@@ -1,0 +1,25 @@
+<div style="padding:10px;border: 2px solid slategrey; width: 400px;">
+<h1><%= @post.title %></h1>
+<p>
+  <%= @post.content %>
+</p>
+</div>
+
+<% if @comment.parent_comment_id %>
+<h3>Comments</h3>
+  <% comment = Comment.find(@comment.parent_comment_id) %>
+  <ol>
+  <% get_parent_comments(comment).each do |parent| %>
+    <li><%= parent.content %></li>
+  <% end %>
+  </ol>
+<% end %>
+<p>
+  <strong><%= @comment.author.email %></strong> <br>
+  <%= @comment.content %>
+</p>
+
+<% if @comment.author_id == current_user.id %>
+  <%= button_to "Delete Comment", post_comment_url(@post, @comment), method: :delete %>
+  <%= button_to "Edit Comment", edit_post_comment_url(@post, @comment), method: :get %>
+<% end %>

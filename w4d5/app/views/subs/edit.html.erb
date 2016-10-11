@@ -1,0 +1,23 @@
+<h1>Edit r/<%= @sub.title %></h1>
+
+<form action="<%= sub_url(@sub) %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <%= auth_token %>
+  <label>Title:
+    <br>
+    <input type="text" name="sub[title]" value="<%= @sub.title %>">
+  </label>
+  <br>
+  <br>
+
+  <label>Description:
+    <br>
+    <textarea name="sub[description]"><%= @sub.description %></textarea>
+  </label>
+  <br>
+  <br>
+
+  <input type="hidden" name="sub[moderator_id]" value="<%= current_user.id %>">
+
+  <input type="submit" value="Edit subreddit">
+</form>

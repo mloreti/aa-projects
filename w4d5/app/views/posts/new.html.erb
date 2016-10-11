@@ -1,0 +1,32 @@
+<h1>New Post to r/<%= @sub.title %></h1>
+
+<form action= '<%= sub_posts_url %>' method="post">
+  <%= auth_token %>
+  <label>Title:
+    <br>
+    <input type="text" name="post[title]">
+  </label>
+  <br>
+  <br>
+
+  <label>URL:
+    <br>
+    <input type="text" name="post[url]">
+  </label>
+  <br>
+  <br>
+
+  <label>Content:
+    <br>
+    <textarea name="post[content]" rows="8" cols="40"></textarea>
+  </label>
+  <br>
+  <br>
+
+
+
+  <input type="hidden" name="post[sub_id]" value="<%= @sub.id %>">
+  <input type="hidden" name="post[author_id]" value="<%= current_user.id %>">
+
+  <input type="submit" value="Create post">
+</form>

@@ -1,0 +1,33 @@
+<div style="padding:10px;border: 2px solid slategrey; width: 400px;">
+<h1><%= @post.title %></h1>
+<p>
+  <%= @post.content %>
+</p>
+</div>
+<h3>Comments</h3>
+<% if params[:parent] %>
+  <% comment = Comment.find(params[:parent]) %>
+  <ol>
+  <% get_parent_comments(comment).each do |parent| %>
+    <li><%= parent.content %></li>
+  <% end %>
+  </ol>
+<% end %>
+
+<h2>New comment</h2>
+<form action="<%= post_comments_url %>" method="post">
+  <%= auth_token %>
+  <label>Comment:
+    <br>
+    <textarea rows="8" cols="40" name="comment[content]"></textarea>
+  </label>
+  <br>
+  <br>
+  <input type="hidden" name="comment[post_id]" value="<%= @post.id %>">
+  <input type="hidden" name="comment[author_id]" value="<%= current_user.id %>">
+  <% if params[:parent] %>
+    <input type="hidden" name="comment[parent_comment_id]" value="<%= params[:parent] %>">
+  <% end %>
+
+  <input type="submit" value="Add comment">
+</form>

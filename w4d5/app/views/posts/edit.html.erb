@@ -1,0 +1,30 @@
+<h1>Edit Post</h1>
+
+<form action= '<%= sub_post_url(@post.sub_id, @post) %>' method="post">
+  <input type="hidden" name="_method" value="patch">
+  <%= auth_token %>
+  <label>Title:
+    <br>
+    <input type="text" name="post[title]" value="<%= @post.title %>">
+  </label>
+  <br>
+  <br>
+
+  <label>URL:
+    <br>
+    <input type="text" name="post[url]" value="<%= @post.url %>">
+  </label>
+  <br>
+  <br>
+
+  <label>Content:
+    <br>
+    <textarea name="post[content]" rows="8" cols="40"><%= @post.content %></textarea>
+  </label>
+  <br>
+  <br>
+  <input type="hidden" name="post[sub_id]" value="<%= @post.sub_id %>">
+  <input type="hidden" name="post[author_id]" value="<%= current_user.id %>">
+
+  <input type="submit" value="Edit post">
+</form>

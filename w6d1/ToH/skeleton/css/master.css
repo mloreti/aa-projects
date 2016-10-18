@@ -1,0 +1,74 @@
+html, body {
+  font-family: 'Eczar';
+  width: 80%;
+  margin: 0 auto;
+  /*background-image: url("https://media.giphy.com/media/OmK8lulOMQ9XO/giphy.gif");*/
+  background-size: cover;
+}
+
+body {
+  padding-top: 100px;
+  background: transparent;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 48px;
+  margin-left: 20px;
+  margin-bottom: 60px;
+  letter-spacing: 1px;
+  color: darkslategrey;
+}
+img {
+  height: 50px;
+  width: 50px;
+}
+
+ul {
+  width: 200px;
+  height: 200px;
+  border-bottom: 7px solid grey;
+  border-radius: 5px;
+  float: left;
+  margin: 20px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content:flex-start;
+  align-items: center;
+}
+ul:hover {
+  border-bottom: 7px solid darkgrey;
+  cursor: pointer;
+}
+
+.disc {
+  display: block;
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  list-style: none;
+  margin-bottom: 5px;
+  padding: 20px 0;
+  font-size: 20px;
+
+}
+
+.disc-1 {
+  background: aqua;
+  width: 33%;
+  border-radius: 100px;
+}
+
+.disc-2 {
+  width: 66%;
+  background: magenta;
+  border-radius: 100px;
+
+}
+
+.disc-3 {
+  background: green;
+  border-radius: 500px;
+
+}

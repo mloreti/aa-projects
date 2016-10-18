@@ -1,0 +1,39 @@
+html, body, ul {
+  margin: 0;
+  padding: 0;
+}
+
+
+ul {
+  width: 600px;
+  height: 600px;
+  background: slategrey;
+}
+
+
+.square {
+  float: left;
+  border: 2px solid white;
+  height: 32.65%;
+  width: 32.65%;
+  list-style: none;
+  font-size: 128px;
+  text-align: center;
+  font-family: sans-serif;
+  padding-top: 20px; 
+}
+
+.square:hover {
+  background: ivory;
+}
+
+.x {
+  background: ivory;
+  color: black;
+
+}
+
+.o {
+  background: ivory;
+  color: red;
+}

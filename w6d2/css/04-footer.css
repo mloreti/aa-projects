@@ -1,0 +1,36 @@
+/* PHASE 4: Footer */
+footer {
+  margin: 0 250px;
+  background: #fff;
+  padding: 20px;
+  font-family: 'Roboto';
+  font-size: 14px;
+  color: #aaa;
+  border: 1px solid #ccc;
+  border-top: 0px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.copyright {
+  float: left;
+}
+
+.links {
+  float: right;
+}
+
+.links li {
+  display: inline;
+  margin-left: 16.5px;
+}
+.links a {
+  text-decoration: none;
+}
+
+.links a:visited {
+  color: #aaa;
+}
+.links a:hover {
+  color: #000;
+}

@@ -1,0 +1,50 @@
+/* PHASE 1: Header */
+body {
+  background: #eee;
+}
+
+
+header {
+  background-color: #f00;
+  padding: 0 250px;
+  font-family: "Roboto";
+}
+
+header a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.logo a {
+  font-weight: 700;
+}
+
+.logo {
+  padding: 10px 20px;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  float: left;
+}
+.logo:hover {
+  background: black;
+}
+
+nav {
+  float: right;
+  color: #fff;
+}
+
+nav > ul > li {
+  display: inline;
+  position: relative;
+  padding: 10px 20px;
+  float: left;
+  border-left: 1px solid #ccc;
+}
+nav li:hover {
+  background: black;
+}
+nav li:last-of-type {
+  border-right: 1px solid #ccc;
+}

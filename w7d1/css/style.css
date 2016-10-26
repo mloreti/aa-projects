@@ -1,0 +1,13 @@
+html, body {
+  font-family: 'Helvetica';
+  padding: 30px;
+}
+
+h1 {
+  font-weight: 300;
+  color: #aaa;
+}
+
+.pressed {
+  color: #aaa;
+}

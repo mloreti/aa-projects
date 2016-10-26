@@ -1,0 +1,27 @@
+// Place all the styles related to the static_pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#content {
+  padding: 50px;
+  font-family: 'Helvetica Neue';
+  h1 {
+    color: #aaa;
+    font-weight: 300;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+  }
+  .todo-title {
+    font-weight: 400;
+    color: dodgerblue;
+    margin-bottom: 0px;
+  }
+  .todo-body {
+    margin-top: 5px;
+    color: #999;
+  }
+  .todo {
+    margin: 40px 0;
+  }
+}

@@ -9,6 +9,9 @@
   </head>
 
   <body>
+    <% if current_user %>
+      Current User: <%= current_user.username %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

@@ -1,11 +1,20 @@
 class Api::UsersController < ApplicationController
-  def create
-    
-  end
 
-  private
+	def create
+		@user = User.new(user_params)
 
-  def user_params
-    params.require(:user).permit(:username, :password)
-  end
+		if @user.save
+			login(@user)
+			render "api/users/show"
+		else
+			render json: @user.errors.full_messages, status: 422
+		end
+	end
+
+	private
+
+	def user_params
+		params.require(:user).permit(:username, :password)
+	end
+
 end
